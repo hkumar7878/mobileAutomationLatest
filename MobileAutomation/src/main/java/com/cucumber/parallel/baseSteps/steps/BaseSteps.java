@@ -22,7 +22,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import com.cucumber.grid.utilities.DriverFactory;
-import com.cucumber.parallel.extent.ExtentTestManager;
+//import com.cucumber.parallel.extent.ExtentTestManager;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -184,7 +184,7 @@ public class BaseSteps {
 			logger.debug("Running thread value is : " + getThreadValue(dr.get())+   "   for Browser : " + "  "+ browser1 + "" +msg);	
 			logger.info("Browser : " + browser1 + "" +msg);
 		}
-		public void passInfo(String messaage)
+		/*public void passInfo(String messaage)
 		{
 			ExtentTestManager.testReport.get().pass(messaage);
 		}
@@ -192,7 +192,7 @@ public class BaseSteps {
 		public void failInfo(String messaage)
 		{
 			ExtentTestManager.testReport.get().fail(messaage);
-		}
+		}*/
 		
 		public String getThreadValue(Object value)
 		{
@@ -205,7 +205,7 @@ public class BaseSteps {
 			
 			return reqText;
 		}
-		public void logInfo(String messaage)
+		/*public void logInfo(String messaage)
 		{
 			try{
 				ExtentTestManager.testReport.get().info(messaage);
@@ -213,7 +213,7 @@ public class BaseSteps {
 			catch(Exception e){
 				System.out.println("Error is" + e.getMessage());
 			}
-		}
+		}*/
 		
 		public void quitWebDriver()
 		{
