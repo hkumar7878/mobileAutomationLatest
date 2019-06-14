@@ -33,8 +33,8 @@ public class NewBaseClass {
 	DesiredCapabilities cap=null;
 	public static Properties prop;
 	//protected WebDriver driver;
-	protected AppiumDriver driver;
-	public static ThreadLocal<WebDriver> dr = new ThreadLocal<WebDriver>();
+	protected AppiumDriver<MobileElement> driver;
+	public static ThreadLocal<AppiumDriver> dr = new ThreadLocal<AppiumDriver>();
 	public static ThreadLocal<ExtentTest> exTest= new ThreadLocal<ExtentTest>(); 
 	//public ThreadLocal<WebDriver> dr = new ThreadLocal<WebDriver>();
 	//public ThreadLocal<ExtentTest> exTest= new ThreadLocal<ExtentTest>();
@@ -48,85 +48,30 @@ public class NewBaseClass {
 	String androidDeviceName;
 	String iosDeviceName;
 	
-	public void deviceSetUp(String browserType) throws MalformedURLException {		
-		String browser=browserType;	
-		if(System.getenv("ExecutionType")!=null && System.getenv("ExecutionType").equalsIgnoreCase("Parallel Android Only")){
-			gridExecution=true;
-			androidDeviceName=System.getenv("Android Device Name");
-			iosDeviceName=System.getenv("iOS Device Name");
-		}
-		if(System.getenv("ExecutionType")!=null && System.getenv("ExecutionType").equalsIgnoreCase("Parallel iOS Only")){
-			gridExecution=true;
-			androidDeviceName=System.getenv("iOS Device Name");
-			iosDeviceName=System.getenv("iOS Device Name");
-		}
-		
-		else 
-		{
-			gridExecution=false;
-			androidDeviceName=System.getenv("Execution Type");
-			iosDeviceName=System.getenv("iOS Device Name");
-		}
-		DriverFactory.setRemote(gridExecution);
-		if (DriverFactory.isRemote()) {
+	
+	public void deviceSetUp() throws MalformedURLException {				
+		String executionType=System.getenv("ExecutionType");
+		DriverFactory.setRemote(true);
+		if (executionType.equalsIgnoreCase("Android Only")) {
 			{
-			if(System.getenv("Parallel Android Only").equalsIgnoreCase("")){
-				if (androidDeviceName.equalsIgnoreCase("Samsung 10.0")) {
-					cap.setCapability("deviceName", "Galaxy J7 Max");
-					cap.setCapability("uuid", "42003a0fd3148479");
-					cap.setCapability("platformName", "Android");
-					cap.setCapability("platformVersion", "8.1.0");
-					cap.setCapability("appPackage","com.sec.android.app.popupcalculator");
-					cap.setCapability("appActivity","com.sec.android.app.popupcalculator.Calculator");
-
-				} else if (iosDeviceName.equalsIgnoreCase("Iphone 6")) {
-					cap.setCapability("deviceName", "Galaxy J7 Max");
-					cap.setCapability("uuid", "42003a0fd3148479");
-					cap.setCapability("platformName", "Android");
-					cap.setCapability("platformVersion", "8.1.0");
-					cap.setCapability("appPackage",
-							"com.sec.android.app.popupcalculator");
-					cap.setCapability("appActivity",
-							"com.sec.android.app.popupcalculator.Calculator");
-				}	
-					URL url = new URL("http://l27.0.0.1:4733/wd/hub");
-					driver = new AppiumDriver<MobileElement>(url, cap);			
-					logger.info("Starting the grid session");
-			}
-			}
-		}
-		
-		else 
-		{
-			if (androidDeviceName.equalsIgnoreCase("Samsung 10.0")) {
 				cap.setCapability("deviceName", "Galaxy J7 Max");
 				cap.setCapability("uuid", "42003a0fd3148479");
 				cap.setCapability("platformName", "Android");
 				cap.setCapability("platformVersion", "8.1.0");
 				cap.setCapability("appPackage","com.sec.android.app.popupcalculator");
-				cap.setCapability("appActivity","com.sec.android.app.popupcalculator.Calculator");
-				//driver= 
-
-			} else if (iosDeviceName.equalsIgnoreCase("Iphone 6")) {
-				cap.setCapability("deviceName", "Galaxy J7 Max");
-				cap.setCapability("uuid", "42003a0fd3148479");
-				cap.setCapability("platformName", "Android");
-				cap.setCapability("platformVersion", "8.1.0");
-				cap.setCapability("appPackage",
-						"com.sec.android.app.popupcalculator");
-				cap.setCapability("appActivity",
-						"com.sec.android.app.popupcalculator.Calculator");
+				cap.setCapability("appActivity","com.sec.android.app.popupcalculator.Calculator");				
+				URL url = new URL("http://l27.0.0.1:4733/wd/hub");
+				driver = new AppiumDriver<MobileElement>(url, cap);			
+				logger.info("Starting the Appium session");
 			}
-				
-		}
+			
 		setWebDriver(driver);
-		getDriver().manage().window().maximize();
 		System.out.println(dr.get());
-		System.out.println("Application opened successfully for " + browser);
-		System.out.println("Application opened successfully for " + browser);
+	
 		logger.info("inside the base class method browser initilization");
-				
-	} 
+		}
+	}			
+	
 	
 	public void configureLogging()
 	{
@@ -135,10 +80,10 @@ public class NewBaseClass {
 	}
 	
 	
-	public static WebDriver getDriver() {
+	public static AppiumDriver<MobileElement> getDriver() {
         return dr.get();
     }
-	public static void setWebDriver(WebDriver driver){
+	public static void setWebDriver(AppiumDriver<MobileElement> driver){
 		dr.set(driver);
 	}
 	

@@ -4,10 +4,10 @@ package com.cucumber.parallel.homepage.steps;
 
 import com.aventstack.extentreports.Status;
 import com.cucumber.parallel.baseSteps.steps.BaseSteps;
+import com.cucumber.parallel.baseSteps.steps.DebugerBaseClass;
 import com.cucumber.parallel.baseSteps.steps.NewBaseClass;
 //import com.cucumber.parallel.extent.ExtentManager;
 //import com.cucumber.parallel.extent.ExtentTestManager;
-
 
 import cucumber.api.DataTable;
 import cucumber.api.PendingException;
@@ -18,7 +18,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class Steps_NewCarSearch extends NewBaseClass{
+public class TestSteps_Calc extends NewBaseClass{
 	
 	protected Scenario scenario;
 	static String scenarioName;
@@ -61,17 +61,31 @@ public class Steps_NewCarSearch extends NewBaseClass{
 
 @Given("^user launches the app$")
 public void user_launches_the_app() throws Throwable {
-	deviceSetUp("Firefox");
+	//deviceSetUp("Android Only");
+	deviceSetUp();
     // Write code here that turns the phrase above into concrete actions
     
 }
+@Then("^user clicks on one digit button$")
+public void user_clicks_on_one_digit_button() throws Throwable {
+    
+}
 
+@Then("^user clicks on plus button$")
+public void user_clicks_on_plus_button() throws Throwable {
+    
+}
 
-	@When("^user navigates to URL '(.*?)'$")
-	public void user_navigates_to_URL(String URL) throws Throwable {
-	    getDriver().navigate().to(URL);
-	    
-	}
+@Then("^user clicks on two digit button$")
+public void user_clicks_on_two_digit_button() throws Throwable {
+   
+}
+
+@Then("^user clicks equals button$")
+public void user_clicks_equals_button() throws Throwable {
+  
+}
+
 
 	
 }

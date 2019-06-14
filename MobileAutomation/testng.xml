@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite">
-  <test thread-count="5" name="Test">
+  <test thread-count="5" name="Android">
+  <parameter name="deviceType" value="Android Only" />
     <classes>
       <class name="com.cucumber.parallel.cardekho.runners.Runner_newcar_search_feature"/>
       <class name="com.cucumber.parallel.newcardekho.steps.Steps_NewCarSearch"/>

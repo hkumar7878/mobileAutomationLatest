@@ -2,16 +2,16 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="395" started-at="2019-06-13T04:08:52Z" finished-at="2019-06-13T04:08:52Z">
+  <suite name="Default suite" duration-ms="20927" started-at="2019-06-14T09:10:01Z" finished-at="2019-06-14T09:10:22Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="395" started-at="2019-06-13T04:08:52Z" finished-at="2019-06-13T04:08:52Z">
-      <class name="com.cucumber.parallel.cardekho.runners.Runner_home_page_feature">
-        <test-method status="PASS" signature="runCuke()[pri:0, instance:com.cucumber.parallel.cardekho.runners.Runner_home_page_feature@4667ae56]" name="runCuke" duration-ms="383" started-at="2019-06-13T16:08:52Z" finished-at="2019-06-13T16:08:52Z">
+    <test name="Default test" duration-ms="20927" started-at="2019-06-14T09:10:01Z" finished-at="2019-06-14T09:10:22Z">
+      <class name="com.cucumber.parallel.mobile.runners.Runner_home_page_feature">
+        <test-method status="PASS" signature="runCuke()[pri:0, instance:com.cucumber.parallel.mobile.runners.Runner_home_page_feature@31c88ec8]" name="runCuke" duration-ms="20927" started-at="2019-06-14T21:10:01Z" finished-at="2019-06-14T21:10:22Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runCuke -->
-      </class> <!-- com.cucumber.parallel.cardekho.runners.Runner_home_page_feature -->
+      </class> <!-- com.cucumber.parallel.mobile.runners.Runner_home_page_feature -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

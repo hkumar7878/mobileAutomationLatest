@@ -1,4 +1,4 @@
-package com.cucumber.parallel.cardekho.runners;
+package com.cucumber.parallel.mobile.runners;
 
 import org.testng.annotations.Test;
 
