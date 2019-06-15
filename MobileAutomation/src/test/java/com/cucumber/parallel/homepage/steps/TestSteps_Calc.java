@@ -3,11 +3,17 @@ package com.cucumber.parallel.homepage.steps;
 
 
 import com.aventstack.extentreports.Status;
+import com.cucumber.grid.app.pages.Page_Home;
+import com.cucumber.grid.pages.actions.Action_CalcHomePage;
+import com.cucumber.grid.pages.locators.Locators_CalcHomePage;
 import com.cucumber.parallel.baseSteps.steps.BaseSteps;
 import com.cucumber.parallel.baseSteps.steps.DebugerBaseClass;
 import com.cucumber.parallel.baseSteps.steps.NewBaseClass;
 //import com.cucumber.parallel.extent.ExtentManager;
 //import com.cucumber.parallel.extent.ExtentTestManager;
+
+
+
 
 import cucumber.api.DataTable;
 import cucumber.api.PendingException;
@@ -23,6 +29,7 @@ public class TestSteps_Calc extends NewBaseClass{
 	protected Scenario scenario;
 	static String scenarioName;
 	static int i=0;
+	Action_CalcHomePage obj1= new Action_CalcHomePage();
 	
 	
 	@Before
@@ -35,7 +42,7 @@ public class TestSteps_Calc extends NewBaseClass{
 		System.out.println("SCENARIO NAME FOR TEST IS " +scenarioName );
 		//ExtentTestManager.startTest("Scenario No : "+i+" " + scenario.getName());
 		//ExtentTestManager.getTest().log(Status.INFO, "Scenario started is :-" + scenario.getName());
-		//setUpFramework();
+		setUpFramework();
 		
 	}
 	
@@ -55,19 +62,22 @@ public class TestSteps_Calc extends NewBaseClass{
 		}
 		//ExtentManager.getReporter().flush();
 		//MyScreenRecorder.stopRecording();
-		//quitWebDriver();
+		quitAppiumDriver();
 	}
 	
 
 @Given("^user launches the app$")
-public void user_launches_the_app() throws Throwable {
-	//deviceSetUp("Android Only");
+public void user_launches_the_app() throws Throwable { 
+
 	deviceSetUp();
+	//deviceSetUp();
     // Write code here that turns the phrase above into concrete actions
     
 }
 @Then("^user clicks on one digit button$")
 public void user_clicks_on_one_digit_button() throws Throwable {
+	Page_Home obj_Home= new Page_Home(driver);
+	obj_Home.click5Btn();
     
 }
 

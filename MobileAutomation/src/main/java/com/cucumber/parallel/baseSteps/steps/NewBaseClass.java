@@ -5,6 +5,7 @@ import io.appium.java_client.MobileElement;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -15,10 +16,9 @@ import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.OutputType;
-
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -31,44 +31,65 @@ public class NewBaseClass {
 	
 	public String browserName;
 	DesiredCapabilities cap=null;
-	public static Properties prop;
-	//protected WebDriver driver;
-	protected AppiumDriver<MobileElement> driver;
+	public Properties Config = new Properties();
+	public static AppiumDriver<WebElement> driver;
 	public static ThreadLocal<AppiumDriver> dr = new ThreadLocal<AppiumDriver>();
 	public static ThreadLocal<ExtentTest> exTest= new ThreadLocal<ExtentTest>(); 
-	//public ThreadLocal<WebDriver> dr = new ThreadLocal<WebDriver>();
-	//public ThreadLocal<ExtentTest> exTest= new ThreadLocal<ExtentTest>();
 	public static ExtentTest test;
 	public static String screenshotPath;
 	public static String screenshotName;
 	public static Logger logger = Logger.getLogger("devpinoyLogger");
 	public FileInputStream fis;
-	private Properties Config = new Properties();
-	public boolean gridExecution=false;
-	String androidDeviceName;
-	String iosDeviceName;
+	public String executionType;
 	
-	
-	public void deviceSetUp() throws MalformedURLException {				
-		String executionType=System.getenv("ExecutionType");
-		DriverFactory.setRemote(true);
-		if (executionType.equalsIgnoreCase("Android Only")) {
-			{
-				cap.setCapability("deviceName", "Galaxy J7 Max");
-				cap.setCapability("uuid", "42003a0fd3148479");
-				cap.setCapability("platformName", "Android");
-				cap.setCapability("platformVersion", "8.1.0");
-				cap.setCapability("appPackage","com.sec.android.app.popupcalculator");
-				cap.setCapability("appActivity","com.sec.android.app.popupcalculator.Calculator");				
-				URL url = new URL("http://l27.0.0.1:4733/wd/hub");
-				driver = new AppiumDriver<MobileElement>(url, cap);			
-				logger.info("Starting the Appium session");
-			}
+	public void setUpFramework()
+	{
+		DriverFactory.setConfigPropertyFile(System.getProperty("user.dir") + "//src//main//java//com//cucumber//grid//configuration//configuration.properties");
+		try {
+			fis= new FileInputStream(DriverFactory.getConfigPropertyFile());
+		} catch (FileNotFoundException e) {			
+			e.printStackTrace();
+		}	
+		try {
+			Config.load(fis);
+			logger.info("Property file loaded!!!!");
 			
-		setWebDriver(driver);
-		System.out.println(dr.get());
-	
-		logger.info("inside the base class method browser initilization");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+		
+	public void deviceSetUp() throws MalformedURLException {				
+		try {
+			if(System.getenv("executionType")!=null && !System.getenv("executionType").isEmpty())
+				executionType=System.getenv("executionType");		
+			else			
+				executionType=Config.getProperty("executionType");		
+			//DriverFactory.setRemote(true);
+			if (executionType.equalsIgnoreCase("Android Only")) {
+				{
+					DesiredCapabilities cap= new DesiredCapabilities();
+					cap.setCapability("deviceName", "Galaxy J7 Max");
+					cap.setCapability("uuid", "42003a0fd3148479");
+					cap.setCapability("platformName", "Android");
+					cap.setCapability("platformVersion", "8.1.0");
+					cap.setCapability("appPackage","com.sec.android.app.popupcalculator");
+					cap.setCapability("appActivity","com.sec.android.app.popupcalculator.Calculator");				
+					URL url = new URL("http://localhost:4723/wd/hub");
+					driver = new AppiumDriver<WebElement>(url, cap);	
+					System.out.println("Starting the appium server");
+					logger.info("Starting the Appium session");
+				}
+				
+			setWebDriver(driver);
+			System.out.println(dr.get());
+
+			logger.info("inside the base class method browser initilization");
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("Exception is " + e.getMessage());
+			e.printStackTrace();
 		}
 	}			
 	
@@ -83,7 +104,7 @@ public class NewBaseClass {
 	public static AppiumDriver<MobileElement> getDriver() {
         return dr.get();
     }
-	public static void setWebDriver(AppiumDriver<MobileElement> driver){
+	public static void setWebDriver(AppiumDriver<WebElement> driver){
 		dr.set(driver);
 	}
 	
@@ -153,9 +174,9 @@ public class NewBaseClass {
 		}
 	}
 */	
-	public void quitWebDriver()
+	public void quitAppiumDriver()
 	{
-		//getDriver().quit();
+		getDriver().quit();
 	}
 
 }

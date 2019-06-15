@@ -4,10 +4,8 @@
   <test thread-count="5" name="Android">
   <parameter name="deviceType" value="Android Only" />
     <classes>
-      <class name="com.cucumber.parallel.cardekho.runners.Runner_newcar_search_feature"/>
-      <class name="com.cucumber.parallel.newcardekho.steps.Steps_NewCarSearch"/>
-      <class name="com.cucumber.parallel.cardekho.runners.Runner_newcar_outline_search_feature"/>
-      <class name="utils.SeleniumDriver"/>
+      <class name="com.cucumber.parallel.mobile.runners.Runner_home_page_feature"/>
+    
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

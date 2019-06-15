@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="20927" started-at="2019-06-14T09:10:01Z" finished-at="2019-06-14T09:10:22Z">
+  <suite name="Default suite" duration-ms="19507" started-at="2019-06-15T23:54:10Z" finished-at="2019-06-15T23:54:29Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="20927" started-at="2019-06-14T09:10:01Z" finished-at="2019-06-14T09:10:22Z">
+    <test name="Default test" duration-ms="19507" started-at="2019-06-15T23:54:10Z" finished-at="2019-06-15T23:54:29Z">
       <class name="com.cucumber.parallel.mobile.runners.Runner_home_page_feature">
-        <test-method status="PASS" signature="runCuke()[pri:0, instance:com.cucumber.parallel.mobile.runners.Runner_home_page_feature@31c88ec8]" name="runCuke" duration-ms="20927" started-at="2019-06-14T21:10:01Z" finished-at="2019-06-14T21:10:22Z">
+        <test-method status="PASS" signature="runCuke()[pri:0, instance:com.cucumber.parallel.mobile.runners.Runner_home_page_feature@4667ae56]" name="runCuke" duration-ms="19495" started-at="2019-06-16T11:54:10Z" finished-at="2019-06-16T11:54:29Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runCuke -->
