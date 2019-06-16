@@ -61,8 +61,8 @@ public class NewBaseClass {
 		
 	public void deviceSetUp() throws MalformedURLException {				
 		try {
-			if(System.getenv("executionType")!=null && !System.getenv("executionType").isEmpty())
-				executionType=System.getenv("executionType");		
+			if(System.getenv("ExecutionType")!=null && !System.getenv("ExecutionType").isEmpty())
+				executionType=System.getenv("ExecutionType");		
 			else			
 				executionType=Config.getProperty("executionType");		
 			//DriverFactory.setRemote(true);
