@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
@@ -21,11 +22,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 
+import com.aventstack.extentreports.Status;
 import com.cucumber.grid.utilities.DriverFactory;
+import com.cucumber.parallel.extent.ExtentTestManager;
 //import com.cucumber.parallel.extent.ExtentTestManager;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
+
+import cucumber.api.Scenario;
 
 public class NewBaseClass {
 	
@@ -41,6 +50,13 @@ public class NewBaseClass {
 	public static Logger logger = Logger.getLogger("devpinoyLogger");
 	public FileInputStream fis;
 	public String executionType;
+	private static HashMap<Integer,String> scenarios;
+	
+	private String getScenario(){
+	    Thread currentThread = Thread.currentThread();
+	    int threadID = currentThread.hashCode();
+	    return scenarios.get(threadID);
+	}
 	
 	public void setUpFramework()
 	{
@@ -58,9 +74,19 @@ public class NewBaseClass {
 			e.printStackTrace();
 		}
 	}
-		
-	public void deviceSetUp() throws MalformedURLException {				
+	
+	
+	// To run or debug the following beforeClass method, run it or debug it from testng.xml file not directly from this class.
+	@Parameters({"deviceName_","UUID_","platformVersion_","URL_"})
+	@BeforeClass
+	public void deviceSetUp(String deviceName_,String UUID_,String platformVersion_,String URL_){
+	//public void deviceSetUp()throws MalformedURLException {	
+		//String test1=Test;
+		//before
 		try {
+			setUpFramework();
+			//String scName=getScenario();
+			
 			if(System.getenv("ExecutionType")!=null && !System.getenv("ExecutionType").isEmpty())
 				executionType=System.getenv("ExecutionType");		
 			else			
@@ -68,13 +94,25 @@ public class NewBaseClass {
 			//DriverFactory.setRemote(true);
 			if (executionType.equalsIgnoreCase("Android Only")) {
 				{
-					DesiredCapabilities cap= new DesiredCapabilities();
+					/*DesiredCapabilities cap= new DesiredCapabilities();
 					cap.setCapability("deviceName", "Galaxy J7 Max");
 					cap.setCapability("uuid", "42003a0fd3148479");
 					cap.setCapability("platformName", "Android");
 					cap.setCapability("platformVersion", "8.1.0");
 					cap.setCapability("appPackage","com.sec.android.app.popupcalculator");
-					cap.setCapability("appActivity","com.sec.android.app.popupcalculator.Calculator");				
+					cap.setCapability("appActivity","com.sec.android.app.popupcalculator.Calculator");*/
+					
+					DesiredCapabilities cap= new DesiredCapabilities();
+					cap.setCapability("deviceName", deviceName_);
+					cap.setCapability("uuid", UUID_);
+					cap.setCapability("platformName", "Android");
+				cap.setCapability("platformVersion", platformVersion_);
+					
+					//cap.setCapability("appPackage","com.sec.android.app.popupcalculator");
+					cap.setCapability("appPackage","nz.co.noelleeming.mynlapp.staging");
+					cap.setCapability("appActivity","nz.co.noelleeming.mynlapp.MainActivity");
+					
+					
 					URL url = new URL("http://localhost:4723/wd/hub");
 					driver = new AppiumDriver<WebElement>(url, cap);	
 					System.out.println("Starting the appium server");

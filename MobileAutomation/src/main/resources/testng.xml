@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite">
-  <test thread-count="5" name="Android">
-  <parameter name="deviceType" value="Android Only" />
+<suite name="Suite" parallel="tests" thread-count="5">
+  <test name="Cucumber Parallel Tests" >
     <classes>
+     <!--  <class name="com.cucumber.parallel.cardekho.runners.Runner_newcar_search_feature"/> -->
       <class name="com.cucumber.parallel.mobile.runners.Runner_home_page_feature"/>  
     </classes>
-  </test> <!-- Test -->
-</suite> <!-- Suite -->
+  </test> 
+  
+<!--   <test name="Cucumber Parallel Tests1" >
+    <classes>
+      <class name="com.cucumber.parallel.cardekho.runners.Runner_newcar_outline_search_feature"/>
+      
+    </classes>
+  </test>  -->
+</suite> 

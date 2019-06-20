@@ -1,7 +1,10 @@
-package com.cucumber.parallel.homepage.steps;
-import java.util.HashMap;
+package com.cucumber.parallel.mobile.runners;
+
+
+
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
 import com.aventstack.extentreports.Status;
 import com.cucumber.grid.app.pages.Page_Home_NLAPP;
 import com.cucumber.grid.pages.actions.Action_CalcHomePage;
@@ -9,8 +12,13 @@ import com.cucumber.grid.pages.locators.Locators_CalcHomePage;
 import com.cucumber.parallel.baseSteps.steps.BaseSteps;
 import com.cucumber.parallel.baseSteps.steps.DebugerBaseClass;
 import com.cucumber.parallel.baseSteps.steps.NewBaseClass;
-import com.cucumber.parallel.extent.ExtentManager;
-import com.cucumber.parallel.extent.ExtentTestManager;
+//import com.cucumber.parallel.extent.ExtentManager;
+//import com.cucumber.parallel.extent.ExtentTestManager;
+
+
+
+
+
 
 import cucumber.api.DataTable;
 import cucumber.api.PendingException;
@@ -26,8 +34,7 @@ public class TestSteps_Calc extends NewBaseClass{
 	protected Scenario scenario;
 	static String scenarioName;
 	static int i=0;
-	//Action_CalcHomePage obj1= new Action_CalcHomePage();
-	
+	Action_CalcHomePage obj1= new Action_CalcHomePage();
 	
 	
 	@Before
@@ -38,8 +45,8 @@ public class TestSteps_Calc extends NewBaseClass{
 		this.scenario=scenario;
 		scenarioName=scenario.getName();
 		System.out.println("SCENARIO NAME FOR TEST IS " +scenarioName );
-		ExtentTestManager.startTest("Scenario No : "+i+" " + scenario.getName());
-		ExtentTestManager.getTest().log(Status.INFO, "Scenario started is :-" + scenario.getName());
+		//ExtentTestManager.startTest("Scenario No : "+i+" " + scenario.getName());
+		//ExtentTestManager.getTest().log(Status.INFO, "Scenario started is :-" + scenario.getName());
 		setUpFramework();
 		
 	}
@@ -49,16 +56,16 @@ public class TestSteps_Calc extends NewBaseClass{
 	{
 		if(scenario.isFailed())
 		{
-			ExtentTestManager.logFail("Scenario failed");
-			ExtentTestManager.addScreenShotOnFailure();
+			//ExtentTestManager.logFail("Scenario failed");
+			//ExtentTestManager.addScreenShotOnFailure();
 		}
 		
 		else
 		{
-			ExtentTestManager.logPass("Scenario passed");
+			//ExtentTestManager.logPass("Scenario passed");
 			
 		}
-		ExtentManager.getReporter().flush();
+		//ExtentManager.getReporter().flush();
 		//MyScreenRecorder.stopRecording();
 		quitAppiumDriver();
 	}
@@ -70,17 +77,12 @@ public void user_launches_the_app() throws Throwable {
 	//String test1=Test;
 	//deviceSetUp();
 	// for parallel execution, fetch values from feature file with the help of 'Example'
-	ExtentTestManager.logInfo("Launching browser and browser is ");
-	//String scname=scenario.getName();
 	Page_Home_NLAPP obj_Home= new Page_Home_NLAPP(driver);
 	obj_Home.verifySearchBar();
-	obj_Home.clickSearchBar();
 	obj_Home.typeSearchBar();
 
     
 }
-//@Parameters({"deviceName_","UUID_","platformVersion_","URL_"})
-//@Test(String s1,String s2,String s3,String s4)
 
 @Then("^user clicks on one digit button$")
 public void user_clicks_on_one_digit_button() throws Throwable {
@@ -102,6 +104,7 @@ public void user_clicks_on_two_digit_button() throws Throwable {
 public void user_clicks_equals_button() throws Throwable {
   
 }
+
 
 	
 }
