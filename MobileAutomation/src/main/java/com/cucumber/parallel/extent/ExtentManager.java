@@ -18,8 +18,8 @@ public class ExtentManager {
 	    
 	    public static ExtentReports extent;
 	    static Date d= new Date();
-	    //static String fileName="Extent_"+d.toString().replace(":", "_").replace(" ", "_") + ".html";
-	    static String fileName="Mobile Automation Report.html";
+	    static String fileName1="Extent_"+d.toString().replace(":", "_").replace(" ", "_") + ".html";
+	    static String fileName="MobileAutomationReport.html";
 	    
 	    public synchronized static ExtentReports getReporter() {
 	    	if (extent == null){
