@@ -6,10 +6,20 @@
   <parameter name="UUID_" value="emulator-5554" /> -->
   <parameter name="deviceName_" value="Galaxy J7 Max" />
    <parameter name="UUID_" value="42003a0fd3148479" />
-  <parameter name="platformVersion_" value="8.1.0" />
- 
+  <parameter name="platformVersion_" value="8.1.0" /> 
   <parameter name="URL_" value="http://localhost:4723/wd/hub"/>
- 
+    <classes>
+      <class name="com.cucumber.parallel.mobile.runners.Runner_home_page_feature"/>    
+    </classes>
+  </test>
+  
+  <test thread-count="5" name="Android12">
+  <!-- <parameter name="deviceName_" value="Galaxy J7 Max" />
+  <parameter name="UUID_" value="emulator-5554" /> -->
+  <parameter name="deviceName_" value="Emulator" />
+   <parameter name="UUID_" value="emulator-5554" />
+  <parameter name="platformVersion_" value="8.0" /> 
+  <parameter name="URL_" value="http://localhost:5000/wd/hub"/>
     <classes>
       <class name="com.cucumber.parallel.mobile.runners.Runner_home_page_feature"/>    
     </classes>

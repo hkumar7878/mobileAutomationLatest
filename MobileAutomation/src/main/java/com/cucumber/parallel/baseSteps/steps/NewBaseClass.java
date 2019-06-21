@@ -85,35 +85,25 @@ public class NewBaseClass {
 		//before
 		try {
 			setUpFramework();
-			//String scName=getScenario();
+		
 			
 			if(System.getenv("ExecutionType")!=null && !System.getenv("ExecutionType").isEmpty())
 				executionType=System.getenv("ExecutionType");		
 			else			
 				executionType=Config.getProperty("executionType");		
-			//DriverFactory.setRemote(true);
+
 			if (executionType.equalsIgnoreCase("Android Only")) {
-				{
-					/*DesiredCapabilities cap= new DesiredCapabilities();
-					cap.setCapability("deviceName", "Galaxy J7 Max");
-					cap.setCapability("uuid", "42003a0fd3148479");
-					cap.setCapability("platformName", "Android");
-					cap.setCapability("platformVersion", "8.1.0");
-					cap.setCapability("appPackage","com.sec.android.app.popupcalculator");
-					cap.setCapability("appActivity","com.sec.android.app.popupcalculator.Calculator");*/
-					
+				{				
 					DesiredCapabilities cap= new DesiredCapabilities();
 					cap.setCapability("deviceName", deviceName_);
 					cap.setCapability("uuid", UUID_);
 					cap.setCapability("platformName", "Android");
-				cap.setCapability("platformVersion", platformVersion_);
-					
+					cap.setCapability("platformVersion", platformVersion_);					
 					//cap.setCapability("appPackage","com.sec.android.app.popupcalculator");
 					cap.setCapability("appPackage","nz.co.noelleeming.mynlapp.staging");
-					cap.setCapability("appActivity","nz.co.noelleeming.mynlapp.MainActivity");
-					
-					
-					URL url = new URL("http://localhost:4723/wd/hub");
+					cap.setCapability("appActivity","nz.co.noelleeming.mynlapp.MainActivity");				
+				//	URL url = new URL("http://localhost:4723/wd/hub");
+					URL url = new URL(URL_);
 					driver = new AppiumDriver<WebElement>(url, cap);	
 					System.out.println("Starting the appium server");
 					logger.info("Starting the Appium session");

@@ -1,13 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="68788" started-at="2019-06-20T07:20:11Z" finished-at="2019-06-20T07:21:20Z">
+  <suite name="Suite" duration-ms="32884" started-at="2019-06-21T04:02:08Z" finished-at="2019-06-21T04:02:41Z">
     <groups>
     </groups>
-    <test name="Android" duration-ms="68788" started-at="2019-06-20T07:20:11Z" finished-at="2019-06-20T07:21:20Z">
+    <test name="Android12" duration-ms="23754" started-at="2019-06-21T04:02:08Z" finished-at="2019-06-21T04:02:32Z">
       <class name="com.cucumber.parallel.mobile.runners.Runner_home_page_feature">
-        <test-method status="PASS" signature="deviceSetUp(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.cucumber.parallel.mobile.runners.Runner_home_page_feature@293a5bf6]" name="deviceSetUp" is-config="true" duration-ms="20723" started-at="2019-06-20T19:20:11Z" finished-at="2019-06-20T19:20:32Z">
+        <test-method status="PASS" signature="deviceSetUp(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.cucumber.parallel.mobile.runners.Runner_home_page_feature@7f13d6e]" name="deviceSetUp" is-config="true" duration-ms="12233" started-at="2019-06-21T16:02:08Z" finished-at="2019-06-21T16:02:21Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Emulator]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[emulator-5554]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[8.0]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[http://localhost:5000/wd/hub]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- deviceSetUp -->
+        <test-method status="PASS" signature="runCuke()[pri:0, instance:com.cucumber.parallel.mobile.runners.Runner_home_page_feature@7f13d6e]" name="runCuke" duration-ms="11510" started-at="2019-06-21T16:02:21Z" finished-at="2019-06-21T16:02:32Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runCuke -->
+        <test-method status="PASS" signature="quitDriver()[pri:0, instance:com.cucumber.parallel.mobile.runners.Runner_home_page_feature@7f13d6e]" name="quitDriver" is-config="true" duration-ms="0" started-at="2019-06-21T16:02:32Z" finished-at="2019-06-21T16:02:32Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- quitDriver -->
+      </class> <!-- com.cucumber.parallel.mobile.runners.Runner_home_page_feature -->
+    </test> <!-- Android12 -->
+    <test name="Android" duration-ms="32884" started-at="2019-06-21T04:02:08Z" finished-at="2019-06-21T04:02:41Z">
+      <class name="com.cucumber.parallel.mobile.runners.Runner_home_page_feature">
+        <test-method status="PASS" signature="deviceSetUp(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.cucumber.parallel.mobile.runners.Runner_home_page_feature@50b494a6]" name="deviceSetUp" is-config="true" duration-ms="20117" started-at="2019-06-21T16:02:08Z" finished-at="2019-06-21T16:02:29Z">
           <params>
             <param index="0">
               <value>
@@ -33,11 +71,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- deviceSetUp -->
-        <test-method status="PASS" signature="runCuke()[pri:0, instance:com.cucumber.parallel.mobile.runners.Runner_home_page_feature@293a5bf6]" name="runCuke" duration-ms="45304" started-at="2019-06-20T19:20:32Z" finished-at="2019-06-20T19:21:17Z">
+        <test-method status="PASS" signature="runCuke()[pri:0, instance:com.cucumber.parallel.mobile.runners.Runner_home_page_feature@50b494a6]" name="runCuke" duration-ms="12761" started-at="2019-06-21T16:02:29Z" finished-at="2019-06-21T16:02:41Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runCuke -->
-        <test-method status="PASS" signature="quitDriver()[pri:0, instance:com.cucumber.parallel.mobile.runners.Runner_home_page_feature@293a5bf6]" name="quitDriver" is-config="true" duration-ms="2746" started-at="2019-06-20T19:21:17Z" finished-at="2019-06-20T19:21:20Z">
+        <test-method status="PASS" signature="quitDriver()[pri:0, instance:com.cucumber.parallel.mobile.runners.Runner_home_page_feature@50b494a6]" name="quitDriver" is-config="true" duration-ms="1" started-at="2019-06-21T16:02:41Z" finished-at="2019-06-21T16:02:41Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- quitDriver -->
